@@ -551,7 +551,7 @@ p {
    FOOTER
    ========================================================================== */
 .footer {
-  padding: var(--space-xl) var(--gutter);
+  padding: var(--space-lg) var(--gutter);
   border-top: 1px solid var(--color-gray-200);
   text-align: center;
 }
@@ -597,12 +597,12 @@ p {
   }
   
   .section {
-    padding: var(--space-lg) var(--gutter);
+    padding: var(--space-md) var(--gutter);
     scroll-margin-top: 56px;
   }
   
   .section-header {
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
   }
   
   .program-grid {
@@ -619,17 +619,21 @@ p {
   }
   
   .about-image {
-    max-width: 280px;
-    margin: var(--space-md) auto var(--space-lg);
+    max-width: 260px;
+    margin: var(--space-sm) auto var(--space-md);
   }
   
   .about-content {
-    gap: var(--space-lg);
-    padding: var(--space-lg) 0;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
   }
   
   .about-bio p {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .social-links {
+    margin-top: var(--space-md);
   }
 }
 
