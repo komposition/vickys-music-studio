@@ -620,7 +620,7 @@ p {
   
   .about-image {
     max-width: 280px;
-    margin: var(--space-xl) auto 0;
+    margin: var(--space-md) auto var(--space-lg);
   }
   
   .about-content {
