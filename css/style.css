@@ -620,7 +620,7 @@ p {
   
   .about-image {
     max-width: 280px;
-    margin: 0 auto;
+    margin: var(--space-xl) auto 0;
   }
   
   .about-content {
@@ -631,6 +631,7 @@ p {
   .about-bio p {
     margin-bottom: var(--space-sm);
   }
+}
 
 /* Large screens */
 @media (min-width: 1200px) {
