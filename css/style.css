@@ -520,6 +520,7 @@ p {
 .social-links {
   display: flex;
   gap: var(--space-lg);
+  margin-top: var(--space-lg);
 }
 
 .social-link {
