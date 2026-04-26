@@ -62,6 +62,26 @@
     });
   });
 
+  // Mobile program switcher
+  const programTabs = document.querySelectorAll('[data-program-tab]');
+  const programPanels = document.querySelectorAll('[data-program-panel]');
+
+  programTabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+      const selectedProgram = this.dataset.programTab;
+
+      programTabs.forEach(currentTab => {
+        const isActive = currentTab.dataset.programTab === selectedProgram;
+        currentTab.classList.toggle('is-active', isActive);
+        currentTab.setAttribute('aria-selected', String(isActive));
+      });
+
+      programPanels.forEach(panel => {
+        panel.classList.toggle('is-active', panel.dataset.programPanel === selectedProgram);
+      });
+    });
+  });
+
   // Initialize
   onScroll();
 })();
