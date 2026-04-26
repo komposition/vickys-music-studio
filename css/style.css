@@ -572,7 +572,7 @@ p {
   }
 
   .program {
-    min-height: calc(100svh - 56px);
+    min-height: 0;
     height: auto;
     padding: 1.25rem 1rem 1.5rem;
     display: flex;
@@ -601,6 +601,10 @@ p {
   .program-switcher {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    --active-tab: 0;
     min-height: 44px;
     padding: 2px;
     border: 1px solid var(--color-gray-200);
@@ -608,23 +612,36 @@ p {
     background-color: var(--color-cream);
   }
 
+  .program-switcher::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    width: calc((100% - 4px) / 2);
+    border-radius: 4px;
+    background-color: var(--color-white);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transform: translateX(calc(var(--active-tab) * 100%));
+    transition: transform 220ms var(--ease-out);
+    z-index: 0;
+  }
+
   .program-tab {
+    position: relative;
+    z-index: 1;
     min-height: 40px;
     border-radius: 4px;
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1;
     color: var(--color-gray-600);
-    transition: color var(--duration-fast),
-                background-color var(--duration-fast),
-                box-shadow var(--duration-fast);
+    transition: color var(--duration-fast);
     touch-action: manipulation;
   }
 
   .program-tab.is-active {
     color: var(--color-black);
-    background-color: var(--color-white);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
   
   .program-grid {
@@ -643,6 +660,10 @@ p {
     display: none;
   }
 
+  .program-item.is-active {
+    animation: program-panel-in 180ms var(--ease-out) both;
+  }
+
   .program-item-title {
     font-size: 0.8125rem;
     line-height: 1.2;
@@ -654,6 +675,17 @@ p {
     height: auto;
     aspect-ratio: 960 / 569;
     min-height: 0;
+  }
+
+  @keyframes program-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   .about-image {
