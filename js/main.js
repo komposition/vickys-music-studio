@@ -9,9 +9,20 @@
   // Header scroll behavior
   const header = document.querySelector('.header');
   const scrollIndicator = document.querySelector('.scroll-indicator');
+  const heroVideo = document.querySelector('.hero-video video');
   
   let lastScroll = 0;
   const scrollThreshold = 50;
+
+  function slowHeroVideo() {
+    if (!heroVideo) return;
+    heroVideo.playbackRate = 0.5;
+  }
+
+  slowHeroVideo();
+  if (heroVideo) {
+    heroVideo.addEventListener('loadedmetadata', slowHeroVideo, { once: true });
+  }
 
   function onScroll() {
     const currentScroll = window.scrollY;
